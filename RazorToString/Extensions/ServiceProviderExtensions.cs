@@ -30,7 +30,7 @@ namespace RazorToStringServices.Extensions
         /// </summary>
         public static string BuildUrl(this IServiceProvider services, string path) => GetHttpsUrl(services) + path;
 
-        public static async Task<string> RenderViewAsync(this IServiceProvider services, string path)
+        public static async Task<string> RenderPageAsync(this IServiceProvider services, string path)
         {
             var url = BuildUrl(services, path);
 
