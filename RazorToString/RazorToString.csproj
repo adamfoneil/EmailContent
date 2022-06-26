@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
     <Authors>Adam O'Neil</Authors>
     <PackageId>AO.RazorToString</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RootNamespace>EmailContentServices</RootNamespace>
+    <RootNamespace>RazorToStringServices</RootNamespace>
     <Copyright>Copyright (c) 2022 Adam O'Neil</Copyright>
     <Description>Helps you use Razor Pages as email content, but BYO SMTP client</Description>
-    <RepositoryUrl>https://github.com/adamfoneil/EmailContent</RepositoryUrl>
+    <RepositoryUrl>https://github.com/adamfoneil/RazorToString</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 

@@ -1,11 +1,11 @@
-﻿using EmailContentServices.Attributes;
-using EmailContentServices.Extensions;
+﻿using RazorToStringServices.Attributes;
+using RazorToStringServices.Extensions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 
-namespace EmailContentServices.Filters
+namespace RazorToStringServices.Filters
 {
-    public class EmailAuthorizeFilter : IPageFilter
+    public class AuthorizeEmailFilter : IPageFilter
     {
         public void OnPageHandlerExecuted(PageHandlerExecutedContext context)
         {
@@ -40,7 +40,7 @@ namespace EmailContentServices.Filters
         private bool HasValidToken(PageHandlerExecutingContext context)
         {
             var request = context.HttpContext.Request;
-            var logger = context.HttpContext.RequestServices.GetService(typeof(ILogger<EmailAuthorizeFilter>)) as ILogger<EmailAuthorizeFilter>;
+            var logger = context.HttpContext.RequestServices.GetService(typeof(ILogger<AuthorizeEmailFilter>)) as ILogger<AuthorizeEmailFilter>;
 
             if (request.Headers.ContainsKey(ServiceProviderExtensions.EmailToken))
             {

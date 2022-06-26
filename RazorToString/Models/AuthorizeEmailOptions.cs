@@ -1,4 +1,4 @@
-﻿namespace EmailContentServices.Models
+﻿namespace RazorToStringServices.Models
 {
     public class AuthorizeEmailOptions
     {

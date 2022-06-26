@@ -1,4 +1,4 @@
-﻿using EmailContentServices.Models;
+﻿using RazorToStringServices.Models;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EmailContentServices.Extensions
+namespace RazorToStringServices.Extensions
 {
     public static class ServiceProviderExtensions
     {
