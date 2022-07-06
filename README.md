@@ -7,7 +7,7 @@ Since there are many email clients out there, I didn't want to couple this solut
 - install the NuGet package **AO.RazorToString** from my custom [package source](https://aosoftware.blob.core.windows.net/packages/index.json)
 - in your application startup, add the [AuthorizeEmailFilter](https://github.com/adamfoneil/RazorToString/blob/master/RazorToString/Filters/AuthorizeEmailFilter.cs) and [AuthorizeEmailOptions](https://github.com/adamfoneil/RazorToString/blob/master/RazorToString/Models/AuthorizeEmailOptions.cs)
 - create Razor pages that you want to send as email, and add the `[AuthorizeEmail]` attribute instead of `[Authorize]`.
-- use the `IServiceProvider` [RenderViewAsync](https://github.com/adamfoneil/RazorToString/blob/master/RazorToString/Extensions/ServiceProviderExtensions.cs#L33) extension method wherever you need to render a page or view to a string.
+- use the `IServiceProvider` [RenderPageAsync](https://github.com/adamfoneil/RazorToString/blob/master/RazorToString/Extensions/ServiceProviderExtensions.cs#L33) extension method wherever you need to render a page or view to a string.
 - there are a few bonus methods part of this library: [BuildUrl](https://github.com/adamfoneil/RazorToString/blob/master/RazorToString/Extensions/ServiceProviderExtensions.cs#L31) and [GetHttpsUrl](https://github.com/adamfoneil/RazorToString/blob/master/RazorToString/Extensions/ServiceProviderExtensions.cs#L25) that let you craft absolute URLs without knowing the host name.
 
 ## Setup
