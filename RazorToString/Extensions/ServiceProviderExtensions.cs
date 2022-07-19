@@ -22,7 +22,15 @@ namespace RazorToStringServices.Extensions
             return addresses?.Addresses ?? Array.Empty<string>();
         }
 
-        public static string GetHttpsUrl(this IServiceProvider services) => GetBaseUrls(services).First(url => url.StartsWith("https://"));
+        public static string GetHttpsUrl(this IServiceProvider services) => GetBaseUrls(services)
+            .First(url => url.StartsWith("https://"))
+            .RemovePort(443);
+
+        public static string RemovePort(this string url, int port)
+        {
+            var uri = new Uri(url);
+            return (uri.Port == port) ? new Uri(uri.Scheme + "://" + uri.Host + uri.PathAndQuery).ToString() : url;
+        }
 
         /// <summary>
         /// builds a URL to a resource in this application.
