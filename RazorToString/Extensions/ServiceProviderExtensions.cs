@@ -22,6 +22,13 @@ namespace RazorToStringServices.Extensions
             return addresses?.Addresses ?? Array.Empty<string>();
         }
 
+        public static string GetBaseUrl(this IServiceProvider services)
+        {
+            var urls = GetBaseUrls(services);
+            var result = urls.FirstOrDefault(url => url.StartsWith("https://")) ?? urls.First(url => url.StartsWith("http://"));
+            return result.RemovePort(443);
+        }
+
         public static string GetHttpsUrl(this IServiceProvider services) => GetBaseUrls(services)
             .First(url => url.StartsWith("https://"))
             .RemovePort(443);
@@ -36,7 +43,7 @@ namespace RazorToStringServices.Extensions
         /// builds a URL to a resource in this application.
         /// Path should NOT start with a slash
         /// </summary>
-        public static string BuildUrl(this IServiceProvider services, string path) => GetHttpsUrl(services) + path;
+        public static string BuildUrl(this IServiceProvider services, string path) => GetBaseUrl(services) + path;
 
         public static async Task<string> RenderPageAsync(this IServiceProvider services, string path)
         {
