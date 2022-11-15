@@ -47,7 +47,8 @@ namespace RazorToStringServices.Extensions
 
         public static async Task<string> RenderPageAsync(this IServiceProvider services, string path)
         {
-            var url = BuildUrl(services, path);
+            // when starting with a full url, use that. Otherwise extract from server environment
+            var url = (path.ToLower().StartsWith("http")) ? path : BuildUrl(services, path);
 
             var http = services.GetRequiredService<HttpClient>();
             http.DefaultRequestHeaders.Clear();
