@@ -41,10 +41,9 @@ namespace RazorToStringServices.Extensions
         }
 
         /// <summary>
-        /// builds a URL to a resource in this application.
-        /// Path should NOT start with a slash
+        /// builds a URL to a resource in this application.        
         /// </summary>
-        public static string BuildUrl(this IServiceProvider services, string path) => GetBaseUrl(services) + path;
+        public static string BuildUrl(this IServiceProvider services, string path) => PathUtil.Combine(GetBaseUrl(services), path);
 
         public static async Task<string> RenderPageAsync(this IServiceProvider services, string path, ILogger? logger = null)
         {
