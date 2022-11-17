@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace RazorToStringServices.Extensions
 {
@@ -45,10 +46,12 @@ namespace RazorToStringServices.Extensions
         /// </summary>
         public static string BuildUrl(this IServiceProvider services, string path) => GetBaseUrl(services) + path;
 
-        public static async Task<string> RenderPageAsync(this IServiceProvider services, string path)
+        public static async Task<string> RenderPageAsync(this IServiceProvider services, string path, ILogger? logger = null)
         {
             // when starting with a full url, use that. Otherwise extract from server environment
             var url = (path.ToLower().StartsWith("http")) ? path : BuildUrl(services, path);
+
+            logger?.LogDebug("RenderPageAsync: {url}", url);
 
             var http = services.GetRequiredService<HttpClient>();
             http.DefaultRequestHeaders.Clear();
