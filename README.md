@@ -58,3 +58,6 @@ await Mailgun.SendAsync(new EmailMessage()
     HtmlBody = html
 });
 ```
+
+## A note on CSS
+You should assume that mail clients won't respect CSS class names, so your emailed HTML content should use something like [Premailer.Net](https://github.com/milkshakesoftware/PreMailer.Net) to inline all CSS classes. You can develop your email content with CSS classes as you typically would, but use Premailer to inline/embed the CSS rules into your html to give your email the best chance of rendering with the highest fidelity.
