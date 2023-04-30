@@ -23,10 +23,13 @@ namespace RazorToStringServices.Extensions
             return addresses?.Addresses ?? Array.Empty<string>();
         }
 
-        public static string GetBaseUrl(this IServiceProvider services)
+        public static string GetBaseUrl(this IServiceProvider services, Func<string, bool>? predicate = null)
         {
+            Func<string, bool> defaultPredicate = (url) => url.StartsWith("https://");
+            var usePredicate = predicate ?? defaultPredicate;
+
             var urls = GetBaseUrls(services);
-            var result = urls.FirstOrDefault(url => url.StartsWith("https://")) ?? urls.First(url => url.StartsWith("http://"));
+            var result = urls.FirstOrDefault(usePredicate) ?? urls.First(url => url.StartsWith("http://"));
             return result.RemovePort(443);
         }
 
@@ -43,7 +46,7 @@ namespace RazorToStringServices.Extensions
         /// <summary>
         /// builds a URL to a resource in this application.        
         /// </summary>
-        public static string BuildUrl(this IServiceProvider services, string path) => PathUtil.Combine(GetBaseUrl(services), path);
+        public static string BuildUrl(this IServiceProvider services, string path, Func<string, bool>? predicate = null) => PathUtil.Combine(GetBaseUrl(services, predicate), path);
 
         public static async Task<string> RenderPageAsync(this IServiceProvider services, string path, ILogger? logger = null)
         {
