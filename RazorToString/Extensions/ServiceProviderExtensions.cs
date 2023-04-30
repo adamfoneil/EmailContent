@@ -29,7 +29,7 @@ namespace RazorToStringServices.Extensions
             var usePredicate = predicate ?? defaultPredicate;
 
             var urls = GetBaseUrls(services);
-            var result = urls.FirstOrDefault(usePredicate) ?? urls.First(url => url.StartsWith("http://"));
+            var result = urls.FirstOrDefault(usePredicate) ?? urls.FirstOrDefault(defaultPredicate) ?? urls.First(url => url.StartsWith("http://"));
             return result.RemovePort(443);
         }
 

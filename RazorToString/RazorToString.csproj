@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Authors>Adam O'Neil</Authors>
     <PackageId>AO.RazorToString</PackageId>
-    <Version>1.0.9</Version>
+    <Version>1.0.10</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RootNamespace>RazorToStringServices</RootNamespace>
     <Copyright>Copyright (c) 2022 Adam O'Neil</Copyright>
